@@ -24,8 +24,12 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/mongoHeadlines");
-var db = mongoose.connection;
+var dbUri = process.env.MONGO_URI || "mongodb://localhost/mongoHeadlines";
+
+// if (process.env.MONGO_URI) {
+// 	dbUri = process.env.MONGO_URI;
+// }
+var db = mongoose.connection(dbUri);
 
 // Show any mongoose errors
 db.on("error", function(error) {
