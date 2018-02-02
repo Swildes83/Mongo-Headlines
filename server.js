@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/mongoHeadlines");
+mongoose.connect("mongodb://https://mongo-headlines.herokuapp.com/");
 var db = mongoose.connection;
 
 // Show any mongoose errors
