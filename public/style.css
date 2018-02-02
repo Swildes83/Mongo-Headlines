@@ -1,6 +1,5 @@
 body {
     background-color: #b4ab93;
-    /*background-image: url("dilbert.gif");*/
     font-family: "Cormorant SC";
   
   }
@@ -13,8 +12,8 @@ body {
   }
   
   .jumbotron{
+    text-align: center;
     background-color: #8b8576;
-    /*background-image: url("dilbert.gif")*/
   }
   
   #articles {
@@ -43,8 +42,6 @@ body {
   
   footer {
       width: 100%;
-      /*position: fixed;*/
       bottom: 0px;
       text-align: center;
-  
-  }
+   }
