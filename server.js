@@ -15,7 +15,6 @@ var cheerio = require('cheerio');
 // Initialize Express
 var app = express();
 
-// Use morgan and body parser with our app
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
   extended: false
@@ -43,9 +42,9 @@ app.get("/scrape", function(req, res) {
 
   //db.articles.drop();
 
-  // First, we grab the body of the html with request
+  //grab the body of the html with request
   request("http://www.huffingtonpost.com/section/comedy", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    //load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
       $("div.middle-rail h2").each(function(i, element) {
         var result = {};
@@ -54,16 +53,15 @@ app.get("/scrape", function(req, res) {
         result.photo = $(this).find("a.card__link").attr("src");
 
       // Using our Article model, create a new entry
-      // This effectively passes the result object to the entry (and the title and link)
       var entry = new Article(result);
 
-      // Now, save that entry to the db
+      //save entry to the db
       entry.save(function(err, doc) {
-        // Log any errors
+        // Log error
         if (err) {
           console.log(err);
         }
-        // Or log the doc
+        // log the doc
         else {
           console.log(doc);
         }
@@ -71,7 +69,7 @@ app.get("/scrape", function(req, res) {
 
     });
   });
-  // Tell the browser that we finished scraping the text
+  // Tell browser we finished scraping the text
   console.log("Scrape Complete");
   res.redirect("/");
 
@@ -81,11 +79,10 @@ app.get("/scrape", function(req, res) {
 app.get("/articles", function(req, res) {
   // Grab every doc in the Articles array
   Article.find({}, function(error, doc) {
-    // Log any errors
+    // Log error
     if (error) {
       console.log(error);
     }
-    // Or send the doc to the browser as a json object
     else {
       res.json(doc);
     }
@@ -141,12 +138,12 @@ app.post("/articles/:id", function(req, res) {
       Article.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
       // Execute the above query
       .exec(function(err, doc) {
-        // Log any errors
+        // Log error
         if (err) {
           console.log(err);
         }
         else {
-          // Or send the document to the browser
+          //send the document to the browser
           res.send(doc);
         }
       });
