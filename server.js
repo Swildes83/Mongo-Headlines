@@ -38,8 +38,6 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-
-
 // A GET request to scrape the echojs website
 app.get("/scrape", function(req, res) {
 
@@ -78,7 +76,6 @@ app.get("/scrape", function(req, res) {
   res.redirect("/");
 
 });
-
 
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
@@ -126,7 +123,6 @@ app.get("/notes/:id", function(req, res){
     }
   });
 });
-
 
 // Create a new note or replace an existing note
 app.post("/articles/:id", function(req, res) {

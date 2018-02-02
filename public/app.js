@@ -8,11 +8,6 @@ $.getJSON("/articles", function(data) {
     }
   });
   
-  // $("#getNewsBtn").click(function(){
-  //
-  // });
-  
-  
   // Whenever someone clicks a p tag
   $(document).on("click", "h5", function() {
     // Empty the notes from the note section
@@ -76,8 +71,6 @@ $.getJSON("/articles", function(data) {
     $("#bodyinput").val("");
   });
     
-    
-    // Whenever someone clicks a p tag
     $(document).on("click", ".note", function() {
       // Empty the notes from the note section
       // $("#titleinput").empty();
@@ -150,8 +143,7 @@ $.getJSON("/articles", function(data) {
           // Empty the notes section
          // $("#notes").empty();
         });
-    
-      // Also, remove the values entered in the input and textarea for note entry
+
       $("#titleinput").val("");
       $("#bodyinput").val("");
     });
@@ -170,9 +162,6 @@ $.getJSON("/articles", function(data) {
           title: $("#titleinput").val(),
           // Value taken from note textarea
           body: $("#bodyinput").val()
-    
         }
-      })
-    
-    
+      })    
     });
