@@ -30,17 +30,18 @@ var dbUri = process.env.MONGO_URI || "mongodb://localhost/mongoHeadlines";
 // 	dbUri = process.env.MONGO_URI;
 // }
 mongoose.Promise = Promise;
-var db = mongoose.connect(dbUri);
+mongoose.connect(dbUri);
+var db = mongoose.connection;
 // console.log(db);
-// // Show any mongoose errors
-// db.on("error", function(error) {
-//   console.log("Mongoose Error: ", error);
-// });
+// Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
 
 // Once logged in to the db through mongoose, log a success message
-// db.once("open", function() {
-//   console.log("Mongoose connection successful.");
-// });
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 
 // A GET request to scrape the echojs website
 app.get("/scrape", function(req, res) {
@@ -66,10 +67,7 @@ app.get("/scrape", function(req, res) {
         if (err) {
           console.log(err);
         }
-        // log the doc
-        else {
-          console.log(doc);
-        }
+      
       });
 
     });
