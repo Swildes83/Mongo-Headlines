@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Newspaper Scraper</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">News Paper Scraper</h1>
+        <h2 class="strong">Huffington Post's Comedy Section</h2>
+        <a class="btn" id="getNewsBtn" href="/scrape">Get today's articles</a>
+      </div>
+    </div>
+
+    <!-- <div id="wrapper">
+      <div id="articles"></div>
+      <div id="notes"></div>
+    </div> -->
+
+    <div class="container">
+      <h4>Click the article title to enter your comments</h4>
+      <div id="articles"></div>
+      <div id="notes"></div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+      <p>&copy; Ysa Tan 2017</p>
+    </div>
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
